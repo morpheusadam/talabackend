@@ -8,12 +8,12 @@ use Filament\Actions\Action;
 use Filament\Resources\Pages\ListRecords;
 use Filament\Forms\Components\Select;
 use Filament\Notifications\Notification;
-use Modules\User\Models\Role;
+use Modules\Auth\Models\Role;
 use Rawilk\FilamentPasswordInput\Password;
 use Filament\Forms;
 use Filament\Support\Enums\Alignment;
 use Illuminate\Support\Facades\Hash;
-use Modules\User\Models\Permission;
+use Modules\Auth\Models\Permission;
 
 class ListUsers extends ListRecords
 {

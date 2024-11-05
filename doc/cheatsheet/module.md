@@ -26,7 +26,7 @@ module:show-model
 module:migrate
 module:migrate-rollback
 module:migrate-refresh
-module:migrate-reset Blog
+module:migrate-reset Mag
 module:seed
 module:publish-migration
 module:publish-config

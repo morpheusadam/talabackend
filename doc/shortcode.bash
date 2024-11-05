@@ -1,1 +1,4 @@
-php artisan migrate:fresh --seed && php artisan module:seed User && php artisan module:seed Mag
+##on
+php artisan migrate:fresh --seed
+php artisan module:migrate-refresh --seed Auth
+php artisan module:migrate-refresh --seed Mag

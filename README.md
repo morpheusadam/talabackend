@@ -7,9 +7,10 @@
 - [Usage](#usage)
 - [Contributing](#contributing)
 - [License](#license)
+- [Database Diagram](#database-diagram)
 
 ## Introduction
-Welcome to the Project Name! This project is designed to [brief description of the project]. It includes features such as user management, post management, and more.
+Welcome to NeoVel! This project is designed to provide a comprehensive platform with features such as user management, post management, and more.
 
 ## Features
 - User Management
@@ -20,12 +21,12 @@ Welcome to the Project Name! This project is designed to [brief description of t
 - Dashboard and Reports
 
 ## Installation
-To get started with this project, follow these steps:
+To get started with NeoVel, follow these steps:
 
 1. **Clone the repository:**
     ```bash
-    git clone https://github.com//morpheusadam/neovel.git
-    cd yourproject
+    git clone https://github.com/morpheusadam/neovel.git
+    cd neovel
     ```
 
 2. **Install dependencies:**
@@ -47,49 +48,48 @@ To get started with this project, follow these steps:
 
 5. **Run migrations:**
     ```bash
-    php artisan migrate
+    php artisan migrate:fresh --seed
+    php artisan module:migrate-refresh --seed Auth
+    php artisan module:migrate-refresh --seed Mag
     ```
 
-6. **Seed the database (optional):**
-    ```bash
-    php artisan db:seed
-    ```
+    
 
-7. **Copy necessary files:**
+6. **Copy necessary files:**
     ```bash
     cp -r doc/install/filemanager/fa vendor/tomatophp/filament-media-manager/resources/lang/
     cp doc/install/expection/ExceptionResource.php vendor/bezhansalleh/filament-exceptions/src/Resources/ExceptionResource.php
     cp -r doc/install/expection/fa /var/www/neovel.local/vendor/bezhansalleh/filament-exceptions/resources/lang
     ```
 
-8. **Run migrations and seed modules:**
+7. **Create a new module:**
     ```bash
-    php artisan migrate:fresh --seed && php artisan module:seed User && php artisan module:seed Mag
+    php artisan module:make Test
+    php artisan module:make-migration create_test_table Test
+    php artisan module:migrate-refresh --seed Test
     ```
 
-9. **Create a new module:**
-    ```bash
-    php artisan migrate:fresh --seed
-    php artisan module:see CMS
-    php artisan make:filament-user
-    ```
+8. **Manage module migrations:**
+    Edit `modules_statuses.json` to enable or disable your own migrations.
 
-10. **Start the development server:**
+9. **Start the development server:**
     ```bash
     php artisan serve
     ```
 
 ## Usage
-Once the installation is complete, you can access the application at `http://localhost:8000`. 
+Once the installation is complete, access the application at `http://localhost:8000`.
 
 ### Admin Panel
-To access the admin panel, navigate to `http://localhost:8000/admin` and log in with the admin credentials.
+Navigate to `http://localhost:8000/admin` and log in with the admin credentials:
+- **Username:** admin
+- **Password:** admin
 
 ### Translations
-This project supports multiple languages. You can find the translation files in the `lang` directory.
+This project supports multiple languages. Translation files are located in the `lang` directory.
 
 ## Contributing
-We welcome contributions to this project. To contribute, please follow these steps:
+We welcome contributions! To contribute, please follow these steps:
 
 1. Fork the repository.
 2. Create a new branch (`git checkout -b feature-branch`).
@@ -100,6 +100,9 @@ We welcome contributions to this project. To contribute, please follow these ste
 
 ## License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
+
+for read modules how to work
+/home/morpheus/Applications/devilbox/data/www/talarin/doc/cheatsheet/module.md
 
 ## Database Diagram
 ![Database Diagram](https://dbdiagram.io/d/66d220d2eef7e08f0e44da9d)

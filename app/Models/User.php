@@ -9,8 +9,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Jeffgreco13\FilamentBreezy\Traits\TwoFactorAuthenticatable;
 use Laravel\Sanctum\HasApiTokens;
+use Modules\Auth\Models\Role;
 use Modules\Mag\Models\Post;
-use Modules\User\Models\Role;
 
 class User extends Authenticatable implements FilamentUser
 {
