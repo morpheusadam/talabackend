@@ -11,6 +11,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Support\Facades\Hash;
+use Modules\Auth\Models\Role as ModelsRole;
 use Modules\User\Models\Role;
 use Rawilk\FilamentPasswordInput\Password;
 
@@ -101,7 +102,7 @@ class UserResource extends Resource
                 Select::make('role_ids')
                     ->label(__('role'))
                     ->relationship('roles', 'role_name')
-                    ->options(Role::all()->pluck('role_name', 'id')->toArray())
+                    ->options(ModelsRole::all()->pluck('role_name', 'id')->toArray())
                     ->required(),
 
                 Password::make('password')

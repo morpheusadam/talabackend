@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Filament\Auth\Login;
+use Modules\Auth\Http\Login;
 use Awcodes\Curator\CuratorPlugin;
 use Awcodes\FilamentGravatar\GravatarPlugin;
 use Awcodes\FilamentGravatar\GravatarProvider;
