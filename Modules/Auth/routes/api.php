@@ -1,5 +1,6 @@
 <?php
 
+use Dingo\Api\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Modules\Auth\Http\Controllers\AuthController;
 
@@ -14,6 +15,21 @@ use Modules\Auth\Http\Controllers\AuthController;
  *
 */
 
-// Route::middleware(['auth:sanctum'])->prefix('v1')->group(function () {
-//     Route::apiResource('auth', AuthController::class)->names('auth');
-// });
+$api = app('Dingo\Api\Routing\Router');
+
+// Define versioned API routes
+$api->version('v1', function ($api) {
+    // Public routes
+    $api->post('register', [AuthController::class, 'register']);
+    $api->post('login', [AuthController::class, 'login']);
+
+    // Protected routes
+    $api->group(['middleware' => 'api.auth'], function ($api) {
+        $api->get('user', function (Request $request) {
+            return $request->user();
+        });
+
+        $api->post('logout', [AuthController::class, 'logout']);
+        $api->get('check-status', [AuthController::class, 'checkLoginStatus']);
+    });
+});

@@ -11,8 +11,9 @@ use Jeffgreco13\FilamentBreezy\Traits\TwoFactorAuthenticatable;
 use Laravel\Sanctum\HasApiTokens;
 use Modules\Auth\Models\Role;
 use Modules\Mag\Models\Post;
+use Tymon\JWTAuth\Contracts\JWTSubject; // Import JWTSubject
 
-class User extends Authenticatable implements FilamentUser
+class User extends Authenticatable implements FilamentUser, JWTSubject // Implement JWTSubject
 {
     use HasApiTokens, HasFactory, Notifiable, TwoFactorAuthenticatable;
 
@@ -27,6 +28,26 @@ class User extends Authenticatable implements FilamentUser
         'password',
         'is_activ',
     ];
+
+    /**
+     * Get the identifier that will be stored in the JWT subject claim.
+     *
+     * @return mixed
+     */
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    /**
+     * Return a key value array, containing any custom claims to be added to the JWT.
+     *
+     * @return array
+     */
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
 
     /**
      * Accessor for role names.

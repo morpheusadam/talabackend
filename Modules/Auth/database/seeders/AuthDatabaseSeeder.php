@@ -3,6 +3,7 @@
 namespace Modules\Auth\Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class AuthDatabaseSeeder extends Seeder
 {
@@ -11,6 +12,9 @@ class AuthDatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // $this->call([]);
-    }
+        DB::table('roles')->insert([
+            'role_name' => 'customer',
+            'description' => 'Default role for new users',
+        ]);
+        }
 }

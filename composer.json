@@ -10,6 +10,7 @@
   "license": "MIT",
   "require": {
     "php": "^8.2",
+    "api-ecosystem-for-laravel/dingo-api": "^4.3",
     "awcodes/filament-curator": "^3.3",
     "awcodes/filament-gravatar": "^2.0",
     "bezhansalleh/filament-exceptions": "^2.0",
@@ -20,6 +21,7 @@
     "laravel-lang/lang": "^12.17",
     "laravel-lang/publisher": "^16.4",
     "laravel/framework": "^11.0",
+    "laravel/passport": "^12.3",
     "laravel/sanctum": "^4.0",
     "laravel/tinker": "^2.9",
     "nwidart/laravel-modules": "^11.1",
@@ -27,6 +29,7 @@
     "qirolab/laravel-themer": "^2.3",
     "rawilk/filament-password-input": "^2.0",
     "sinnbeck/markdom": "^2.0",
+    "tymon/jwt-auth": "^2.1",
     "z3d0x/filament-logger": "^0.7.0"
   },
 

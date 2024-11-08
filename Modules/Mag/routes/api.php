@@ -14,6 +14,10 @@ use Modules\Mag\Http\Controllers\MagController;
  *
 */
 
-Route::middleware(['auth:sanctum'])->prefix('v1')->group(function () {
-    Route::apiResource('mag', MagController::class)->names('mag');
+$api = app('Dingo\Api\Routing\Router');
+
+$api->version('v1', function ($api) {
+    $api->get('hello', function () {
+        return response()->json(['message' => 'Hello, World!']);
+    });
 });
