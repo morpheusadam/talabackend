@@ -15,20 +15,20 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $user = User::factory()->create([
-            'name' => 'admin',
-            'email' => 'admin@admin.test',
-            'password' => Hash::make('admin'),
-        ]);
-        User::factory()->count(20)->create();
+        // $user = User::factory()->create([
+        //     'name' => 'admin',
+        //     'email' => 'admin@admin.test',
+        //     'password' => Hash::make('password'),
+        // ]);
+        // User::factory()->count(20)->create();
 
 
 
 
-        Notification::make()
-            ->title('Welcome to Filament')
-            ->body('You are ready to start building your application.')
-            ->success()
-            ->sendToDatabase($user);
+        // Notification::make()
+        //     ->title('Welcome to Filament')
+        //     ->body('You are ready to start building your application.')
+        //     ->success()
+        //     ->sendToDatabase($user);
     }
 }

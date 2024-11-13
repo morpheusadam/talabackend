@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Modules\Auth\Models\Role;
 use Tymon\JWTAuth\Facades\JWTAuth; // Added for JWT
-use Tymon\JWTAuth\Exceptions\JWTException; // Added for JWT exceptions
+use Tymon\JWTAuth\Exceptions\JWTException;
 
 class AuthController extends Controller
 {
@@ -47,14 +47,38 @@ class AuthController extends Controller
             try {
                 // Create a JWT token
                 $token = JWTAuth::attempt($validatedData);
-                return response()->json(['message' => 'Login successful', 'user' => $user, 'token' => $token], 200);
+
+                // Format the response
+                return response()->json([
+                    'success' => true,
+                    'token' => $token,
+                    'user' => [
+                        'id' => $user->id,
+                        'name' => $user->name,
+                        'email' => $user->email,
+                    ],
+                ], 200);
             } catch (JWTException $e) {
                 return response()->json(['message' => 'Could not create token'], 500);
             }
         }
 
-        return response()->json(['message' => 'Invalid credentials'], 401);
+        return response()->json(['success' => false, 'message' => 'Invalid credentials'], 401);
     }
+
+
+
+
+
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        return response()->json(['message' => 'Logout successful'], 200);
+    }
+
+
+
 
     public function checkLoginStatus(Request $request)
     {
@@ -64,11 +88,21 @@ class AuthController extends Controller
 
         return response()->json(['message' => 'User is not logged in'], 401);
     }
-
-    public function logout(Request $request)
+    public function checkRoleByEmail(Request $request)
     {
-        // Invalidate the token
-        JWTAuth::invalidate(JWTAuth::getToken());
-        return response()->json(['message' => 'Logout successful'], 200);
+        $validatedData = $request->validate([
+            'email' => 'required|string|email',
+        ]);
+
+        $user = User::where('email', $validatedData['email'])->first();
+
+        if (!$user) {
+            return response()->json(['message' => 'User not found'], 404);
+        }
+
+        $roles = $user->roles()->pluck('role_name');
+
+        return response()->json(['email' => $user->email, 'roles' => $roles], 200);
     }
+
 }
