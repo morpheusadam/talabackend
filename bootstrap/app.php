@@ -1,6 +1,5 @@
 <?php
 
-use BezhanSalleh\FilamentExceptions\FilamentExceptions;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -17,13 +16,13 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->web([
-          //  App\Http\Middleware\AddSeoDefaults::class,
+            // Add any middleware you need here
+            // App\Http\Middleware\AddSeoDefaults::class,
         ]);
 
         $middleware->redirectTo(fn () => Filament\Pages\Dashboard::getUrl());
     })
     ->withExceptions(function (Exceptions $exceptions) {
-        $exceptions->reportable(fn (Throwable $e) => $exceptions->handler->shouldReport($e) &&
-            FilamentExceptions::report($e)
-        );
+        // Add any custom exception handling logic here
+        // Example: $exceptions->reportable(fn (Throwable $e) => $exceptions->handler->shouldReport($e));
     })->create();

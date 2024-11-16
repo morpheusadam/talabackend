@@ -77,7 +77,7 @@ class AdminPanelProvider extends PanelProvider
 
                     ->disablePluginStyles(),
 
-                FilamentExceptionsPlugin::make(),
+            //    FilamentExceptionsPlugin::make(),
 
                 GravatarPlugin::make(),
             ])

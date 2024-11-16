@@ -13,7 +13,6 @@
     "api-ecosystem-for-laravel/dingo-api": "^4.3",
     "awcodes/filament-curator": "^3.3",
     "awcodes/filament-gravatar": "^2.0",
-    "bezhansalleh/filament-exceptions": "^2.0",
     "croustibat/filament-jobs-monitor": "^2.4.0",
     "diglactic/laravel-breadcrumbs": "^9.0",
     "filament/filament": "^3.2.50",
@@ -28,6 +27,7 @@
     "qirolab/laravel-themer": "^2.3",
     "rawilk/filament-password-input": "^2.0",
     "sinnbeck/markdom": "^2.0",
+    "tymon/jwt-auth": "*",
     "z3d0x/filament-logger": "^0.7.0"
   },
   "require-dev": {
