@@ -18,7 +18,7 @@ class HallDatabaseSeeder extends Seeder
             HlFacilitiesSeeder::class,
             HlMenusSeeder::class,
             HlMenuItemsSeeder::class,
-            HlCustomersSeeder::class,
+        //    HlCustomersSeeder::class,
             HlReservationsSeeder::class,
             HlEventTypesSeeder::class,
             HlHallEventTypesSeeder::class,

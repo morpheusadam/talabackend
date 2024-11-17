@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('hl_reservations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('customer_id')->constrained('hl_customers')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('hall_id')->constrained('hl_halls')->onDelete('cascade');
             $table->dateTime('date');
             $table->enum('status', ['reserved', 'available']);

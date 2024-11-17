@@ -1,6 +1,4 @@
 {
     "Auth": true,
-    "Mag": true,
-    "Reserv": true,
     "Hall": true
 }

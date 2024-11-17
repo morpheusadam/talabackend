@@ -28,11 +28,14 @@ class refseed extends Command
         public function handle()
         {
             // Run the main application migrations and seed
-            $this->call('migrate:fresh', ['--seed' => true]);
+          $this->call('migrate:fresh');
+           $this->call('module:seed', ['module' => 'Auth']);
+           $this->call('module:migrate-refresh', ['module' => 'Hall']);
 
-            // Run the module migrations and seed for Auth
-            $this->call('module:migrate-refresh', ['--seed' => true, 'module' => 'Auth']);
-            $this->call('module:migrate-refresh', ['--seed' => true, 'module' => 'Hall']);
+            // Run the module migrations for Auth
+           // $this->call('module:migrate-refresh', ['module' => 'Auth']);
+
+            // $this->call('module:seed', ['module' => 'Hall']);
 
             // Run the module migrations and seed for Mag
           //  $this->call('module:migrate-refresh', ['--seed' => true, 'module' => 'Mag']);

@@ -14,11 +14,10 @@ class AuthDatabaseSeeder extends Seeder
     {
         $this->call([
             RoleSeeder::class,
-            RolePermissionSeeder::class,
             UserSeeder::class,
-            UserRoleSeeder::class,
-           // UserMetaSeeder::class,
-            PermissionSeeder::class
+
+
+         
         ]);
     }
 }
