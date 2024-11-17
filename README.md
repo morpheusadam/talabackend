@@ -52,7 +52,7 @@ To get started with NeoVel, follow these steps:
     php artisan module:migrate-refresh --seed Auth
     php artisan module:migrate-refresh --seed Mag
     ```
-
+php artisan refseed
     
 
 6. **Copy necessary files:**

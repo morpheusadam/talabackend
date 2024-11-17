@@ -32,6 +32,7 @@ class refseed extends Command
 
             // Run the module migrations and seed for Auth
             $this->call('module:migrate-refresh', ['--seed' => true, 'module' => 'Auth']);
+            $this->call('module:migrate-refresh', ['--seed' => true, 'module' => 'Hall']);
 
             // Run the module migrations and seed for Mag
           //  $this->call('module:migrate-refresh', ['--seed' => true, 'module' => 'Mag']);

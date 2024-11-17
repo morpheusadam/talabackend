@@ -13,10 +13,14 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('order_id')->constrained('orders');
-            $table->foreignId('product_id')->constrained('products');
-            $table->integer('quantity');
-            $table->decimal('price', 10, 2);
+            $table->foreignId('customer_id')->constrained('customers');
+            $table->foreignId('vendor_id')->constrained('vendors'); // اضافه کردن ارتباط با فروشنده
+            $table->dateTime('order_date')->default(now());
+            $table->decimal('total_amount', 10, 2);
+            $table->enum('status', ['Pending', 'Processing', 'Shipped', 'Delivered', 'Cancelled'])->default('Pending');
+            $table->enum('payment_status', ['Pending', 'Completed', 'Failed'])->default('Pending');
+            $table->string('shipping_address')->nullable();
+            $table->foreignId('payment_method_id')->constrained('payment_methods');
             $table->timestamps();
         });
     }

@@ -11,17 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('hl_facilities', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('hall_id')->constrained('hl_halls')->onDelete('cascade');
             $table->string('name');
             $table->text('description')->nullable();
-            $table->decimal('price', 10, 2);
-            $table->integer('stock');
-            $table->foreignId('category_id')->constrained('product_categories');
-            $table->foreignId('vendor_id')->constrained('vendors'); // اضافه کردن ارتباط با فروشنده
             $table->string('image_url')->nullable();
-            $table->boolean('is_active')->default(true);
-            $table->date('expiration_date')->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('hl_facilities');
     }
 };
