@@ -12,18 +12,13 @@ use JeffGreco13\FilamentBreezy\Traits\TwoFactorAuthenticatable;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, TwoFactorAuthenticatable;
+    use HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
     protected $fillable = [
         'name',
         'email',
         'password',
-        'role_id',
+        'role_id', // Ensure this is provided or nullable
         'company_name',
         'website',
         'address',
@@ -57,5 +52,42 @@ class User extends Authenticatable
     public function role(): BelongsTo
     {
         return $this->belongsTo(Role::class);
+    }
+
+    /**
+     * Get the role ID by role name.
+     *
+     * @param string $roleName
+     * @return int|null
+     */
+    public static function getRoleIdByName(string $roleName): ?int
+    {
+        $role = Role::where('name', $roleName)->first();
+        return $role ? $role->id : null;
+    }
+
+    public function isAdmin(): bool
+    {
+        return $this->role && $this->role->name === 'admin';
+    }
+
+    /**
+     * Check if the user is a client.
+     *
+     * @return bool
+     */
+    public function isClient(): bool
+    {
+        return $this->role && $this->role->name === 'client';
+    }
+
+    /**
+     * Check if the user is a vendor.
+     *
+     * @return bool
+     */
+    public function isVendor(): bool
+    {
+        return $this->role && $this->role->name === 'vendor';
     }
 }
