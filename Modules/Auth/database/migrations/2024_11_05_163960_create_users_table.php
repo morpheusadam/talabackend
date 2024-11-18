@@ -20,7 +20,7 @@ return new class extends Migration {
             $table->string('website')->nullable();
             $table->string('address')->nullable();
             $table->string('logo')->nullable();
-            $table->foreignId('role_id')->constrained('roles')->onDelete('cascade')->default(1);
+            $table->foreignId('role_id')->nullable()->constrained('roles')->onDelete('cascade'); // تغییر به nullable
             $table->boolean('is_active')->default(true);
             $table->rememberToken();
             $table->timestamps();
